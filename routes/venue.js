@@ -11,13 +11,19 @@ router.get('/events/:eventId/comments/:commentId/edit', eventsController.editCom
 router.put('/events/edit/:id', eventsController.updateEvent);
 
 router.post('/events', eventsController.create);
+
+
 router.post('/events/:id/comments', eventsController.addComment);
 
-router.post('/events/:eventId/comments/:commentId', eventsController.updateComment); 
+router.post('/events/:id/comments', eventsController.updateComment); 
 
 router.delete('/events/delete/:id', eventsController.deleteEvent);
 
 router.delete('/events/:eventId/comments/:commentId', eventsController.deleteComment);
+
+
+
+
 
 
 

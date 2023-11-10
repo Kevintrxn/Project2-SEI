@@ -22,10 +22,7 @@
             <% event.comments.forEach(function(comment) { %>
               <p><%= comment.user.name %>: <%= comment.comment %></p>
               <% if (user && comment.user.equals(user._id)) { %>
-                <form action="/venue/events/<%= event._id %>/comments/<%= comment._id %>/edit" method="get">
-                  <button type="submit">Edit Comment</button>
-                </form>
-                <form action="/venue/events/<%= event._id %>/comments/<%= comment._id %>/delete?_method=DELETE" method="post">
+                <form action="/venue/events/<%= event._id %>/comments/<%= comment._id %>?_method=DELETE" method="post">
                   <button type="submit">Delete Comment</button>
                 </form>
               <% } %>

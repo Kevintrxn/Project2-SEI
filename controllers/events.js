@@ -96,23 +96,20 @@ async function updateComment(req, res) {
 async function deleteComment(req, res) {
     try {
         const event = await Venue.findById(req.params.eventId);
-
-        if (event) {
-            const comment = event.comments.id(req.params.commentId);
-            if (comment && comment.user.equals(req.user._id)) {
-                comment.remove();
-                await event.save();
-            }
+        if (!event) {
+            return res.redirect('/');
         }
-        
+        const comment = event.comments.id(req.params.commentId);
+        if (!comment || !comment.user.equals(req.user._id)) {
+            return res.redirect('/');
+        }
+        event.comments.pull({ _id: req.params.commentId });
+        await event.save();
         res.redirect('/');
-    } catch (err) { }
+    } catch (err) {
+        res.redirect('/');
+    }
 }
-
-
-
-
-
 
 module.exports = {
     newEvent,
