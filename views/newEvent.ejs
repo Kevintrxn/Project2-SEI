@@ -4,19 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Post your experience</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
-    <form action="/venue/events" method="post">
-    <input type="text" name="eventName" placeholder="Event Name" required>
-    <input type="text" name="eventLocation" placeholder="Event Location" required>
-    <input type="date" name="eventDate" required>
-    <select name="experience" required>
-    <option value="positive">Positive</option>
-    <option value="negative">Negative</option>
-    </select>
-    <input type="number" name="rating" min="0" max="5" required>
-    <textarea name="reviewText" placeholder="Review Text" required></textarea>
-    <button type="submit">Submit</button>
-</form>
+    <div class="newEvent-container">
+        <h1 class="newEvent-title">Share your experience!</h1>
+        <div class="form-container">
+            <form>
+                <div class="form-group">
+                    <label for="eventName">Event Name</label>
+                    <input type="text" id="eventName" name="eventName" placeholder="713 Music Hall" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventLocation">Event Location</label>
+                    <input type="text" id="eventLocation" name="eventLocation" placeholder="Houston, TX" required>
+                </div>
+                <div class="form-group">
+                    <label for="eventDate">Event Date</label>
+                    <input type="date" id="eventDate" name="eventDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Overall Experience</label>
+                    <select id="experience" name="experience" required>
+                        <option value="">Choose an option</option>
+                        <option value="positive">Positive</option>
+                        <option value="negative">Negative</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rating">Rating (1-5)</label>
+                    <input type="number" id="rating" name="rating" min="1" max="5" required>
+                </div>
+                <div class="form-group">
+                    <label for="reviewText">Review Text</label>
+                    <input type="text" id="reviewText" name="reviewText" placeholder="Had a really great experience! Very spacious and friendly venue!" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
+
 </html>
