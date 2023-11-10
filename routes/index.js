@@ -22,15 +22,15 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
     'google',
     {
-        successRedirect: '/venue.js',
-        failureRedirect: '/venue.js'
+        successRedirect: '/',
+        failureRedirect: '/',
     }
 ));
 
   // OAuth logout route
 router.get('/logout', function(req, res){
     req.logout(function() {
-    res.redirect('/venue.js');
+    res.redirect('/');
     });
 });
 
