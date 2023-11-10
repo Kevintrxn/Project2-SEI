@@ -2,7 +2,9 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+header {
+  margin-bottom: 40px; 
+}
 a {
   color: #00B7FF;
 }
@@ -28,3 +30,19 @@ a {
 .nav-bar a:last-child {
   margin-right: 0;
 }
+
+/* Title and slogen styling */
+.page-title {
+  text-align: center;
+  font-size: 48px; 
+  margin-top: 10px; 
+  margin-bottom: 30px; 
+}
+.slogan {
+  text-align: center;
+  font-size: 18px; 
+  margin-top: 0; 
+  margin-bottom: 20px; 
+  color: #666; 
+}
+
