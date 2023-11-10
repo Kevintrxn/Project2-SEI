@@ -10,7 +10,7 @@ require('./config/database');
 // Routers 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var eventsRouter = require('./routes/events');
+var venueRouter = require('./routes/venue');
 
 var app = express();
 
@@ -27,7 +27,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // Using router paths 
-app.use('/events', eventsRouter);
+app.use('/venue', venueRouter);
 
 
 // catch 404 and forward to error handler

@@ -15,7 +15,7 @@ const commentsSchema = new Schema({
     timestamps: true 
 });
 
-const eventSchema = new Schema({
+const venueSchema = new Schema({
     eventName: {
         type: String,
         required: true
@@ -48,4 +48,4 @@ const eventSchema = new Schema({
     timestamps: true 
 });
 
-module.exports = mongoose.model('Event', eventSchema); 
+module.exports = mongoose.model('Venue', venueSchema); 

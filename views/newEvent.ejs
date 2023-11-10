@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post your experience</title>
+</head>
+<body>
+    <form action="/venue/events" method="post">
+    <input type="text" name="eventName" placeholder="Event Name" required>
+    <input type="text" name="eventLocation" placeholder="Event Location" required>
+    <input type="date" name="eventDate" required>
+    <select name="experience" required>
+    <option value="positive">Positive</option>
+    <option value="negative">Negative</option>
+    </select>
+    <input type="number" name="rating" min="0" max="5" required>
+    <textarea name="reviewText" placeholder="Review Text" required></textarea>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
