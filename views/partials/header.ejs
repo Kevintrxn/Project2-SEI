@@ -12,6 +12,6 @@
         <a href="/">Home</a>
         <a href="/venue/events/new">Post New Review</a>
         <a href="/auth/google" class="login">Log in with Google&nbsp;</a>
-        <a href="/">Log Out</a>
+        <% if (user) { %><a href="/logout">Logout</a><% } %>
     </nav>
     
