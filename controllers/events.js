@@ -15,7 +15,10 @@ async function create(req, res) {
 
 async function listEvents(req, res) {
     try {
-        const events = await Venue.find().populate('user');
+        const events = await Venue.find().populate({
+            path: 'comments.user',
+            select: 'name'
+        });
         res.render('index', { title: 'venue.Me', events: events });
     } catch (err) { }
 }
@@ -52,11 +55,74 @@ async function deleteEvent(req, res) {
     } catch (err) { }
 }
 
+async function addComment(req, res) {
+    try {
+        const event = await Venue.findById(req.params.id);
+        if (!event) {
+            return;
+        }
+        event.comments.push({
+            comment: req.body.comment,
+            user: req.user._id
+        });
+        await event.save();
+        res.redirect('/');
+    } catch (err) { }
+}
+
+async function editCommentForm(req, res) {
+    try {
+        const event = await Venue.findById(req.params.eventId);
+        const comment = event.comments.id(req.params.commentId);
+        if (!comment || !comment.user.equals(req.user._id)) {
+            return; 
+        }
+    } catch (err) { }
+}
+
+async function updateComment(req, res) {
+    try {
+        const event = await Venue.findById(req.params.eventId);
+        const comment = event.comments.id(req.params.commentId);
+        if (!comment || !comment.user.equals(req.user._id)) {
+            return; 
+        }
+        comment.comment = req.body.comment;
+        await event.save();
+        res.redirect('/');
+    } catch (err) { }
+}
+
+async function deleteComment(req, res) {
+    try {
+        const event = await Venue.findById(req.params.eventId);
+
+        if (event) {
+            const comment = event.comments.id(req.params.commentId);
+            if (comment && comment.user.equals(req.user._id)) {
+                comment.remove();
+                await event.save();
+            }
+        }
+        
+        res.redirect('/');
+    } catch (err) { }
+}
+
+
+
+
+
+
 module.exports = {
     newEvent,
     create,
     listEvents,
     editEventForm,
     updateEvent,
-    deleteEvent
+    deleteEvent,
+    addComment,
+    editCommentForm,
+    updateComment,
+    deleteComment,
 };

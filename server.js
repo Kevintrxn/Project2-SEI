@@ -40,10 +40,10 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use(methodOverride('_method'));
 
 // Using router paths 
 app.use('/venue', venueRouter);
