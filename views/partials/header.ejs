@@ -8,12 +8,12 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
-    <nav>
-        <% if (user) { %>
-            <a href="/events/new">Post New Review</a>
-            <a href="/logout">Log out</a>
-        <% } else { %>
-            <a href="/auth/google">Log in with Google</a>
-        <% } %>
-    </nav>
-    
+    <header>
+        <nav class="nav-bar">
+            <% if (user) { %>
+                <a href="/venue/events/new">Post New Review</a>
+                <a href="/logout">Log out</a>
+            <% } else { %>
+                <a href="/auth/google">Log in with Google</a>
+            <% } %>
+        </nav>

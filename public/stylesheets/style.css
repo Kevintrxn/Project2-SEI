@@ -6,3 +6,25 @@ body {
 a {
   color: #00B7FF;
 }
+
+/* Nav Bar styling  */
+.nav-bar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
+}
+.nav-bar a {
+  margin-right: 15px; 
+  padding: 10px 15px; 
+  background-color: #f8f8f8; 
+  border-radius: 20px; 
+  text-decoration: none;
+  color: #333; 
+  transition: background-color 0.3s; 
+}
+.nav-bar a:hover {
+  background-color: #e0e0e0; 
+}
+.nav-bar a:last-child {
+  margin-right: 0;
+}
