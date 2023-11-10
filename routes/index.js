@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
+const eventsController = require('../controllers/events')
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Insert Title Here' });
-});
+
+router.get('/', eventsController.listEvents);
+
 
 module.exports = router;

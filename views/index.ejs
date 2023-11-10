@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>venue.Me</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <% include partials/header %>
   <body>
     <h1>venue.Me</h1>
-    <p>An easy way to share your venue experience with friends</p>
+    <p>An easy way to share your venue experience with friends!</p>
+    <% if (events && events.length > 0) { %>
+      <% events.forEach(function(event) { %>
+        <div class="event">
+          <h2><%= event.eventName %></h2>
+          <p>Location: <%= event.eventLocation %></p>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>No events to display.</p>
+    <% } %>
   </body>
 </html>
