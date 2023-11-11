@@ -1,7 +1,9 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #e7f2f8;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  background-color: #f0f4f8;
+  color: #2c3e50;
 }
 header {
   margin-bottom: 40px; 
@@ -59,7 +61,7 @@ a {
   color: #333;
 }
 .form-container {
-  background-color: #f8f8f8;
+  background-color: #F5F5F5;
   padding: 20px;
   border-radius: 8px;
 }
@@ -79,7 +81,7 @@ a {
   border-radius: 4px;
 }
 .form-group input[type="submit"] {
-  background-color: #f28b82;
+  background-color: #3498db;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -106,6 +108,11 @@ a {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+  background-color: #ffffff; 
+  border: 1px solid #e1e1e1; 
+  border-radius: 5px; 
+  padding: 20px; 
+  margin-bottom: 20px; 
 }
 
 .user-inputs,
@@ -121,7 +128,7 @@ a {
 }
 
 button {
-  background-color: #f28b82; 
+  background-color: #3498db; 
   color: white;
   padding: 5px 10px;
   margin-bottom: 5px;
