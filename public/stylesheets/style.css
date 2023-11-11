@@ -88,3 +88,54 @@ a {
 .form-group input[type="submit"]:hover {
   background-color: #304ffe;
 }
+
+/* main page styling */
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.page-title,
+.slogan {
+  text-align: center;
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.user-inputs,
+.comments {
+  width: 48%; 
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment {
+  border-top: 1px solid #eaeaea;
+  padding-top: 10px;
+}
+
+button {
+  background-color: #f28b82; 
+  color: white;
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #304ffe; 
+}
+
+textarea {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

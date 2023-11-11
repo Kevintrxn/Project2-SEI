@@ -13,7 +13,7 @@ const venueSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User', 
         required: true
-    },
+},
     eventName: {
         type: String,
         required: true

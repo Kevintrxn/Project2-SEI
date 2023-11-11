@@ -6,51 +6,58 @@
   </head>
   <% include partials/header %>
   <body>
-    <h1 class="page-title">venue.Me</h1>
-    <p class="slogan">An easy way to share your venue experience with friends!</p>
-    <% if (events && events.length > 0) { %>
-      <% events.forEach(function(event) { %>
-        <div class="event">
-          <h2><%= event.eventName %></h2>
-          <h3>Posted by: <%= event.user.name %></h3>
-          <p>Location: <%= event.eventLocation %></p>
-          <p>Date: <%= new Date(event.eventDate).toISOString().split('T')[0] %></p>
-          <p>Rating: <%= event.rating %></p>
-          <p>Overall Experience: <%= event.experience %></p>
-          <p>Review: <%= event.reviewText %></p>
-          <div class="comments">
-            <% event.comments.forEach(function(comment) { %>
-              <p><%= comment.user.name %>: <%= comment.comment %></p>
-              <% if (user && comment.user.equals(user._id)) { %>
-                <form action="/venue/events/<%= event._id %>/comments/<%= comment._id %>?_method=PUT" method="post">
-                  <textarea name="comment" placeholder="Edit your comment"><%= comment.comment %></textarea>
-                  <button type="submit">Save Changes</button>
-                </form>
-                <form action="/venue/events/<%= event._id %>/comments/<%= comment._id %>?_method=DELETE" method="post">
-                  <button type="submit">Delete Comment</button>
-                </form>
-              <% } %>
+    <div class="main-container">
+        <h1 class="page-title">venue.Me</h1>
+        <p class="slogan">An easy way to share your venue experience with friends!</p>
+        <% if (events && events.length > 0) { %>
+            <% events.forEach(function(event) { %>
+                <div class="content-container">
+                    <div class="user-inputs">
+                        <h2><%= event.eventName %></h2>
+                        <h3>Posted by: <%= user.name %></h3>
+                        <p>Location: <%= event.eventLocation %></p>
+                        <p>Date: <%= new Date(event.eventDate).toISOString().split('T')[0] %></p>
+                        <p>Rating: <%= event.rating %></p>
+                        <p>Overall Experience: <%= event.experience %></p>
+                        <p>Review: <%= event.reviewText %></p>
+                        <% if (user && event.user.equals(user._id)) { %>
+                            <form action="/venue/events/edit/<%= event._id %>" method="get">
+                                <button type="submit">Edit Review</button>
+                            </form>
+                            <form action="/venue/events/<%= event._id %>?_method=DELETE" method="post">
+                                <button type="submit">Delete Review</button>
+                            </form>
+                        <% } %>
+                    </div>
+                    <div class="comments">
+                        <% event.comments.forEach(function(comment) { %>
+                            <div class="comment">
+                                <p><%= comment.user.name %>: <%= comment.comment %></p>
+                                <% if (user && comment.user.equals(user._id)) { %>
+                                    <form action="/venue/events/<%= event._id %>/comments/<%= comment._id %>?_method=PUT" method="post">
+                                        <textarea name="comment" placeholder="Edit your comment"><%= comment.comment %></textarea>
+                                        <button type="submit">Save Changes</button>
+                                    </form>
+                                    <form action="/venue/events/<%= event._id %>/comments/<%= comment._id %>?_method=DELETE" method="post">
+                                        <button type="submit">Delete Comment</button>
+                                    </form>
+                                <% } %>
+                            </div>
+                        <% }) %>
+                        <% if (user) { %>
+                            <form action="/venue/events/<%= event._id %>/comments" method="post">
+                                <textarea name="comment" placeholder="Leave a comment"></textarea>
+                                <button type="submit">Post Comment</button>
+                            </form>
+                        <% } %>
+                    </div>
+                </div>
             <% }) %>
-          </div>
-          <% if (user) { %>
-            <form action="/venue/events/<%= event._id %>/comments" method="post">
-                <textarea name="comment" placeholder="Leave a comment"></textarea>
-                <button type="submit">Post Comment</button>
-            </form>
-          <% } %>
-          <% if (user && event.user.equals(user._id)) { %>
-            <form action="/venue/events/edit/<%= event._id %>" method="get">
-              <button type="submit">Edit</button>
-            </form>
-            <form action="/venue/events/delete/<%= event._id %>?_method=DELETE" method="post">
-              <button type="submit">Delete</button>
-            </form>
-          <% } %>
-        </div>
-      <% }) %>
-    <% } else { %>
-      <p>No events to display.</p>
-    <% } %>
-  </body>
+        <% } else { %>
+            <p>No events to display.</p>
+        <% } %>
+    </div>
+</body>
+
 
 </html>
